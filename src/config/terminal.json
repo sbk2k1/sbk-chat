@@ -1,0 +1,284 @@
+
+{
+  "project_name": "Terminal Portfolio",
+  "theme": "RHEL-style dark terminal",
+  "startup": {
+    "quote": "\"The quieter you become, the more you are able to hear.\"",
+    "ascii_banner": "Saptarshi Terminal v1.0\n-----------------------",
+    "boot_sequence": true
+  },
+  "visuals": {
+    "font": "Monospace",
+    "colors": {
+      "background": "#1A1A1A",
+      "foreground": "#D0D0D0",
+      "cursor": "#FF5F5F",
+      "selection": "#444444",
+      "palette": {
+        "black": "#1C1C1C",
+        "red": "#FF5F5F",
+        "green": "#5FAF5F",
+        "yellow": "#FFAF00",
+        "blue": "#5FAFFF",
+        "magenta": "#AF5FFF",
+        "cyan": "#00AFAF",
+        "white": "#D0D0D0",
+        "bright_black": "#4E4E4E",
+        "bright_red": "#FF8787",
+        "bright_green": "#87FF87",
+        "bright_yellow": "#FFFFAF",
+        "bright_blue": "#87D7FF",
+        "bright_magenta": "#D787FF",
+        "bright_cyan": "#5FFFFF",
+        "bright_white": "#FFFFFF"
+      },
+      "text": "#D0D0D0",
+      "prompt": "#FF5F5F",
+      "directory": "#5FAFFF",
+      "file": "#AFD700",
+      "scripts": "#FFAF00",
+      "highlight": "#FFAF00",
+      "error": "#FF0000",
+      "success": "#5FFF5F",
+      "info": "#87D7FF"
+    },
+    "cursor": {
+      "style": "block",
+      "blinking": false
+    },
+    "animations": {
+      "typing": false,
+      "modals": true
+    }
+  },
+  "input_behavior": {
+    "autocomplete": {
+      "enabled": true,
+      "trigger": "Tab",
+      "scope": ["directories", "files"]
+    },
+    "command_latency": "instant",
+    "history_navigation": true,
+    "multi_key_bindings": {
+      "Ctrl+C": "cancel current line",
+      "ArrowUp": "previous command",
+      "ArrowDown": "next command"
+    },
+    "prompt_format": "[saptarshi@terminal \\w]$ "
+  },
+  "filesystem": {
+    "editable": true,
+    "structure": {
+      "/": {
+        "type": "directory",
+        "children": {
+          "about": {
+            "type": "directory",
+            "children": {
+              "bio.md": "Born to build. Currently breaking and making things in tech.",
+              "goals.md": "To lead strategic innovation in FinTech/AI/Web3 by fusing engineering and business thinking."
+            }
+          },
+          "projects": {
+            "type": "directory",
+            "children": {
+              "web": {
+                "type": "directory",
+                "children": {
+                  "portfolio.md": "A React + FastAPI terminal-style website showcasing my work.",
+                  "dxball.md": "DX-Ball revival using AI, made for casual team play."
+                }
+              },
+              "ml": {
+                "type": "directory",
+                "children": {
+                  "forecasting.md": "Time series experiments using PyTorch Forecasting and GluonTS.",
+                  "rag.md": "RAG-based chatbot with custom memory injected via documents."
+                }
+              }
+            }
+          },
+          "experience": {
+            "type": "directory",
+            "children": {
+              "internships": {
+                "type": "directory",
+                "children": {
+                  "contelligenz.md": "Built and optimized ML pipelines at a data-personalization startup. Improved runtime by 16x."
+                }
+              },
+              "jobs": {
+                "type": "directory",
+                "children": {
+                  "current-role.md": "Working on legacy Java Spring systems with WebLogic and Oracle DB. Preparing CI/CD migration.",
+                  "future-goals.md": "Strategic tech management in AI/Web3/Semiconductors."
+                }
+              }
+            }
+          },
+          "skills": {
+            "type": "directory",
+            "children": {
+              "frontend.md": "React 19, Tailwind, Vite, Tanstack, UI/UX focus",
+              "backend.md": "FastAPI, SQLAlchemy, Supabase, PostgreSQL, Prometheus/Grafana",
+              "data.md": "Forecasting, PyTorch, GluonTS, pandas",
+              "infra.md": "Docker, Linux (Nobara, Zsh), servers & networking",
+              "web3.md": "ERC-20, NFT, on-chain identity, multichain infra"
+            }
+          },
+          "interests": {
+            "type": "directory",
+            "children": {
+              "music.md": "A.R. Rahman, Tamil OSTs, ambient work loops",
+              "movies.md": "Tarantino, stylized narratives, period-action pieces",
+              "hobbies.md": "Tinkering OS, automation, embedded tech + games"
+            }
+          },
+          "etc": {
+            "type": "directory",
+            "children": {
+              "info": "Name: Saptarshi Bhattacharya\nEmail: sb@sbk2k1.in\nGitHub: github.com/sbk2k1\nLocation: India"
+            }
+          },
+          "resume.sh": {
+            "type": "script",
+            "action": "open_modal",
+            "target": "resume.pdf"
+          },
+          "website.sh": {
+            "type": "script",
+            "action": "open_link",
+            "target": "https://your.main.website"
+          },
+          "minimal.sh": {
+            "type": "script",
+            "action": "open_link",
+            "target": "https://your.minimal.website"
+          }
+        }
+      }
+    }
+  },
+  "commands": {
+    "working": [
+      "ls",
+      "cd",
+      "pwd",
+      "cat",
+      "tree",
+      "vi",
+      "echo",
+      "help",
+      "clear",
+      "whoami",
+      "history",
+      "exit",
+      "chat",
+      "ll",
+      "la",
+      ".."
+    ],
+    "aliases": {
+      "ll": "ls -al",
+      "la": "ls -a",
+      "..": "cd .."
+    },
+    "custom": {
+      "cat /etc/info": "Displays contact info from /etc/info",
+      "vi": "Only opens existing .md files, editing not allowed",
+      "chat": "Starts LLM REPL with Python-style prompt",
+      "help": "Lists available commands with descriptions"
+    },
+    "restricted": [
+      {
+        "command": "vi [newfile]",
+        "response": "Permission denied: Read-only file system"
+      },
+      {
+        "command": "mkdir",
+        "response": "mkdir: operation not permitted"
+      },
+      {
+        "command": "rmdir",
+        "response": "rmdir: operation not permitted"
+      },
+      {
+        "command": "rm",
+        "response": "rm: operation not permitted"
+      },
+      {
+        "command": "rm -rf",
+        "response": "rm: permission denied"
+      },
+      {
+        "command": "ls -lrt",
+        "response": "ls: cannot access '-lrt': No such file or directory"
+      }
+    ],
+    "network": [
+      {
+        "command": "ping",
+        "response": "ping: network unreachable"
+      },
+      {
+        "command": "nslookup",
+        "response": "DNS resolution failed"
+      },
+      {
+        "command": "traceroute",
+        "response": "Network is down"
+      }
+    ],
+    "easter_eggs": [
+      {
+        "command": "play music",
+        "action": "Plays A.R. Rahman loop or track snippet"
+      },
+      {
+        "command": "sudo make me coffee",
+        "response": "I'm a terminal, not a barista. But I like mine strong ☕"
+      },
+      {
+        "command": "fortune",
+        "response": "'When you cd enough, you find your true ~/'"
+      }
+    ],
+    "not_found": {
+      "response": "bash: {command}: command not found",
+      "style": "italic text-gray-400"
+    }
+  },
+  "ui_features": {
+    "instant_feedback": true,
+    "scroll_lock": true,
+    "modal_style": {
+      "background": "#222",
+      "text": "#D0D0D0",
+      "titlebar": "#5FAFFF",
+      "border": "#444"
+    }
+  },
+  "chatbot": {
+    "enabled": true,
+    "entrypoint": "chat",
+    "exit_keys": ["Ctrl+C", "Ctrl+Z"],
+    "reentry_message": "Exited chat. Welcome back to the shell.",
+    "prompt": ">>> ",
+    "llm": {
+      "backend": "Custom LLM fine-tuned on Saptarshi's data",
+      "streaming": true,
+      "memory": "session-only"
+    }
+  },
+  "deployment": {
+    "static_site": true,
+    "framework": "React",
+    "targets": ["Vercel", "GitHub Pages", "Netlify"],
+    "output": "Single-page app with bundled JSON config"
+  },
+  "accessibility": {
+    "keyboard_navigation": true,
+    "screen_reader": true,
+    "mobile_optimized": true
+  }
+}

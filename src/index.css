@@ -1,0 +1,152 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 26 26 26;
+    --foreground: 208 208 208;
+
+    --card: 26 26 26;
+    --card-foreground: 208 208 208;
+
+    --popover: 34 34 34;
+    --popover-foreground: 208 208 208;
+
+    --primary: 255 95 95;
+    --primary-foreground: 26 26 26;
+
+    --secondary: 95 175 255;
+    --secondary-foreground: 26 26 26;
+
+    --muted: 68 68 68;
+    --muted-foreground: 175 175 175;
+
+    --accent: 255 175 0;
+    --accent-foreground: 26 26 26;
+
+    --destructive: 255 0 0;
+    --destructive-foreground: 208 208 208;
+
+    --border: 68 68 68;
+    --input: 68 68 68;
+    --ring: 255 175 0;
+
+    --radius: 0.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Terminal-specific styles */
+  .terminal-container {
+    background: #1A1A1A;
+    color: #D0D0D0;
+  }
+
+  .terminal-prompt {
+    color: #FF5F5F;
+  }
+
+  .terminal-directory {
+    color: #5FAFFF;
+  }
+
+  .terminal-file {
+    color: #AFD700;
+  }
+
+  .terminal-script {
+    color: #FFAF00;
+  }
+
+  .terminal-error {
+    color: #FF0000;
+  }
+
+  .terminal-success {
+    color: #5FFF5F;
+  }
+
+  .terminal-info {
+    color: #87D7FF;
+  }
+
+  /* Scrollbar styling for terminal */
+  .terminal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: #444444;
+    color: #D0D0D0;
+  }
+
+  /* Cursor styles */
+  .terminal-cursor {
+    color: #FF5F5F;
+  }
+
+  .terminal-cursor-block {
+    background: #FF5F5F;
+    color: #1A1A1A;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    body {
+      font-size: 12px;
+    }
+    
+    .terminal-container {
+      padding: 8px;
+    }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .terminal-container {
+      background: #000000;
+      color: #FFFFFF;
+    }
+    
+    .terminal-prompt {
+      color: #FF0000;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor {
+      animation: none;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

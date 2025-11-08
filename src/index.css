@@ -5,34 +5,60 @@
 
 @layer base {
   :root {
-    --background: 26 26 26;
+    /* RHEL/xterm-256color palette */
+    --terminal-bg: #1C1C1C;
+    --terminal-fg: #D0D0D0;
+    
+    /* Standard colors */
+    --terminal-black: #000000;
+    --terminal-red: #CD0000;
+    --terminal-green: #00CD00;
+    --terminal-yellow: #CDCD00;
+    --terminal-blue: #0000EE;
+    --terminal-magenta: #CD00CD;
+    --terminal-cyan: #00CDCD;
+    --terminal-white: #E5E5E5;
+    
+    /* Bright colors */
+    --terminal-bright-black: #7F7F7F;
+    --terminal-bright-red: #FF0000;
+    --terminal-bright-green: #00FF00;
+    --terminal-bright-yellow: #FFFF00;
+    --terminal-bright-blue: #5C5CFF;
+    --terminal-bright-magenta: #FF00FF;
+    --terminal-bright-cyan: #00FFFF;
+    --terminal-bright-white: #FFFFFF;
+    
+    /* Semantic colors */
+    --terminal-prompt: #5F87FF;
+    --terminal-directory: #5FAFFF;
+    --terminal-file: #D0D0D0;
+    --terminal-executable: #00FF00;
+    --terminal-link: #00FFFF;
+    --terminal-error: #FF0000;
+    --terminal-success: #00FF00;
+    --terminal-info: #00CDCD;
+    
+    /* UI colors for shadcn compatibility */
+    --background: 28 28 28;
     --foreground: 208 208 208;
-
-    --card: 26 26 26;
+    --card: 28 28 28;
     --card-foreground: 208 208 208;
-
     --popover: 34 34 34;
     --popover-foreground: 208 208 208;
-
-    --primary: 255 95 95;
-    --primary-foreground: 26 26 26;
-
+    --primary: 95 135 255;
+    --primary-foreground: 28 28 28;
     --secondary: 95 175 255;
-    --secondary-foreground: 26 26 26;
-
+    --secondary-foreground: 28 28 28;
     --muted: 68 68 68;
     --muted-foreground: 175 175 175;
-
     --accent: 255 175 0;
-    --accent-foreground: 26 26 26;
-
+    --accent-foreground: 28 28 28;
     --destructive: 255 0 0;
     --destructive-foreground: 208 208 208;
-
     --border: 68 68 68;
     --input: 68 68 68;
     --ring: 255 175 0;
-
     --radius: 0.25rem;
   }
 
@@ -42,76 +68,142 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Terminal-specific styles */
+  /* Terminal container */
   .terminal-container {
-    background: #1A1A1A;
-    color: #D0D0D0;
+    background: var(--terminal-bg);
+    color: var(--terminal-fg);
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
   }
 
+  /* Terminal text colors */
   .terminal-prompt {
-    color: #FF5F5F;
+    color: var(--terminal-prompt);
   }
 
   .terminal-directory {
-    color: #5FAFFF;
+    color: var(--terminal-directory);
   }
 
   .terminal-file {
-    color: #AFD700;
+    color: var(--terminal-file);
+  }
+
+  .terminal-executable {
+    color: var(--terminal-executable);
   }
 
   .terminal-script {
-    color: #FFAF00;
+    color: var(--terminal-executable);
+  }
+
+  .terminal-link {
+    color: var(--terminal-link);
   }
 
   .terminal-error {
-    color: #FF0000;
+    color: var(--terminal-error);
   }
 
   .terminal-success {
-    color: #5FFF5F;
+    color: var(--terminal-success);
   }
 
   .terminal-info {
-    color: #87D7FF;
+    color: var(--terminal-info);
+  }
+
+  /* Smooth scrolling */
+  .terminal-scroll {
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /* Scrollbar styling for terminal */
   .terminal-scroll::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   .terminal-scroll::-webkit-scrollbar-track {
-    background: #2a2a2a;
+    background: #0a0a0a;
   }
 
   .terminal-scroll::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
+    background: #444444;
+    border-radius: 0;
   }
 
   .terminal-scroll::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #555555;
+  }
+
+  /* Firefox scrollbar */
+  .terminal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #444444 #0a0a0a;
   }
 
   /* Selection styling */
   ::selection {
     background: #444444;
-    color: #D0D0D0;
+    color: var(--terminal-fg);
+  }
+
+  ::-moz-selection {
+    background: #444444;
+    color: var(--terminal-fg);
   }
 
   /* Cursor styles */
   .terminal-cursor {
-    color: #FF5F5F;
+    color: var(--terminal-prompt);
   }
 
   .terminal-cursor-block {
-    background: #FF5F5F;
-    color: #1A1A1A;
+    background: var(--terminal-fg);
+    color: var(--terminal-bg);
+    display: inline-block;
+    width: 0.6em;
+  }
+
+  /* Cursor blink animation */
+  @keyframes cursor-blink {
+    0%, 49% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .cursor-blink {
+    animation: cursor-blink 1060ms step-end infinite;
+  }
+
+  /* Boot sequence styling */
+  .boot-sequence {
+    color: var(--terminal-bright-green);
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  }
+
+  .boot-ok {
+    color: var(--terminal-bright-green);
+  }
+
+  .boot-failed {
+    color: var(--terminal-bright-red);
   }
 
   /* Mobile optimizations */
@@ -122,24 +214,34 @@
     
     .terminal-container {
       padding: 8px;
+      font-size: 12px;
+      letter-spacing: 0.3px;
     }
   }
 
   /* High contrast mode */
   @media (prefers-contrast: high) {
+    :root {
+      --terminal-bg: #000000;
+      --terminal-fg: #FFFFFF;
+      --terminal-prompt: #00FFFF;
+      --terminal-directory: #00FFFF;
+      --terminal-error: #FF0000;
+    }
+    
     .terminal-container {
       background: #000000;
       color: #FFFFFF;
-    }
-    
-    .terminal-prompt {
-      color: #FF0000;
     }
   }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .terminal-cursor {
+    .terminal-scroll {
+      scroll-behavior: auto;
+    }
+    
+    .cursor-blink {
       animation: none;
     }
     

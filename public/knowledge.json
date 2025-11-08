@@ -1,0 +1,383 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-11-08T00:00:00Z",
+  "entries": [
+    {
+      "id": "bio_001",
+      "category": "personal",
+      "content": "Saptarshi is a passionate software engineer with expertise in full-stack development, cloud infrastructure, and AI/ML systems. He has a strong background in building scalable applications and enjoys working on challenging technical problems.",
+      "metadata": {
+        "tags": [
+          "background",
+          "overview"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "bio_002",
+      "category": "personal",
+      "content": "Saptarshi holds a degree in Computer Science and has been actively coding for over 8 years. He is deeply interested in Linux systems, terminal-based workflows, and developer tooling.",
+      "metadata": {
+        "tags": [
+          "education",
+          "background"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "bio_003",
+      "category": "personal",
+      "content": "Outside of work, Saptarshi enjoys contributing to open-source projects, exploring new technologies, and sharing knowledge through technical writing and mentoring.",
+      "metadata": {
+        "tags": [
+          "interests",
+          "community"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_001",
+      "category": "skills",
+      "content": "Programming Languages: Saptarshi is proficient in TypeScript, JavaScript, Python, Go, and Rust. He has extensive experience with modern JavaScript/TypeScript ecosystems including React, Node.js, and various build tools.",
+      "metadata": {
+        "tags": [
+          "programming",
+          "languages"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_002",
+      "category": "skills",
+      "content": "Frontend Development: Expert in React, TypeScript, and modern CSS frameworks including Tailwind CSS. Experienced with state management libraries like Redux and Zustand, and has built numerous responsive, accessible web applications.",
+      "metadata": {
+        "tags": [
+          "frontend",
+          "react",
+          "web"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_003",
+      "category": "skills",
+      "content": "Backend Development: Strong experience with Node.js, Express, and building RESTful APIs. Familiar with GraphQL, microservices architecture, and event-driven systems.",
+      "metadata": {
+        "tags": [
+          "backend",
+          "api",
+          "nodejs"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_004",
+      "category": "skills",
+      "content": "Cloud & DevOps: Experienced with AWS services (EC2, S3, Lambda, RDS), Docker containerization, Kubernetes orchestration, and CI/CD pipelines using GitHub Actions and Jenkins.",
+      "metadata": {
+        "tags": [
+          "cloud",
+          "devops",
+          "aws",
+          "docker"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_005",
+      "category": "skills",
+      "content": "Databases: Proficient with both SQL (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis) databases. Experienced in database design, optimization, and query performance tuning.",
+      "metadata": {
+        "tags": [
+          "database",
+          "sql",
+          "nosql"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_006",
+      "category": "skills",
+      "content": "AI/ML: Familiar with machine learning concepts, LLM integration, and has worked with APIs from OpenAI, Anthropic, and Google Gemini. Experience building AI-powered applications and chatbots.",
+      "metadata": {
+        "tags": [
+          "ai",
+          "ml",
+          "llm"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "skills_007",
+      "category": "skills",
+      "content": "Linux & Systems: Deep knowledge of Linux systems (particularly RHEL/CentOS), bash scripting, system administration, and terminal-based development workflows. Comfortable with vim, tmux, and command-line tools.",
+      "metadata": {
+        "tags": [
+          "linux",
+          "systems",
+          "bash"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "projects_001",
+      "category": "projects",
+      "content": "Terminal Portfolio: Built an authentic RHEL-style terminal portfolio website using React and TypeScript. Features include a YAML-based filesystem, dual AI chat integration (Gemini and local LLM), and realistic terminal emulation with proper color schemes and command implementations.",
+      "metadata": {
+        "tags": [
+          "portfolio",
+          "terminal",
+          "react",
+          "ai"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "projects_002",
+      "category": "projects",
+      "content": "E-commerce Platform: Developed a full-stack e-commerce platform with React frontend, Node.js backend, and PostgreSQL database. Implemented features like product catalog, shopping cart, payment integration with Stripe, and admin dashboard.",
+      "metadata": {
+        "tags": [
+          "ecommerce",
+          "fullstack",
+          "react",
+          "nodejs"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "projects_003",
+      "category": "projects",
+      "content": "DevOps Automation Tool: Created a CLI tool in Go for automating deployment workflows. Features include Docker container management, AWS resource provisioning, and automated testing pipelines.",
+      "metadata": {
+        "tags": [
+          "devops",
+          "cli",
+          "go",
+          "automation"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "projects_004",
+      "category": "projects",
+      "content": "Real-time Collaboration App: Built a real-time collaborative document editing application using WebSockets, React, and MongoDB. Implemented operational transformation for conflict resolution and user presence indicators.",
+      "metadata": {
+        "tags": [
+          "realtime",
+          "websockets",
+          "collaboration"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "projects_005",
+      "category": "projects",
+      "content": "AI Code Assistant: Developed an AI-powered code assistant that integrates with VS Code. Uses LLMs for code generation, refactoring suggestions, and documentation generation. Built with TypeScript and the VS Code Extension API.",
+      "metadata": {
+        "tags": [
+          "ai",
+          "vscode",
+          "typescript",
+          "tools"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "experience_001",
+      "category": "experience",
+      "content": "Senior Software Engineer at TechCorp (2022-Present): Leading development of cloud-native applications using React, Node.js, and AWS. Architected microservices infrastructure serving millions of users. Mentoring junior developers and conducting code reviews.",
+      "metadata": {
+        "tags": [
+          "work",
+          "senior",
+          "leadership"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "experience_002",
+      "category": "experience",
+      "content": "Software Engineer at StartupXYZ (2020-2022): Built full-stack features for a SaaS platform. Implemented real-time data synchronization, payment processing, and analytics dashboards. Reduced API response times by 60% through optimization.",
+      "metadata": {
+        "tags": [
+          "work",
+          "fullstack",
+          "saas"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "experience_003",
+      "category": "experience",
+      "content": "Junior Developer at WebAgency (2018-2020): Developed responsive websites and web applications for various clients. Worked with React, WordPress, and custom PHP solutions. Gained experience in client communication and project management.",
+      "metadata": {
+        "tags": [
+          "work",
+          "junior",
+          "web"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "experience_004",
+      "category": "experience",
+      "content": "Open Source Contributions: Active contributor to several open-source projects including React ecosystem libraries, developer tools, and Linux utilities. Maintained packages with over 10k downloads on npm.",
+      "metadata": {
+        "tags": [
+          "opensource",
+          "community",
+          "contributions"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "interests_001",
+      "category": "interests",
+      "content": "Terminal Aesthetics: Passionate about creating beautiful and functional terminal interfaces. Enjoys customizing shell prompts, color schemes, and building terminal-based applications that prioritize keyboard-driven workflows.",
+      "metadata": {
+        "tags": [
+          "terminal",
+          "ui",
+          "aesthetics"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "interests_002",
+      "category": "interests",
+      "content": "System Architecture: Deeply interested in distributed systems, scalability patterns, and system design. Enjoys reading about and implementing various architectural patterns like event sourcing, CQRS, and microservices.",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "systems",
+          "design"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "interests_003",
+      "category": "interests",
+      "content": "Developer Experience: Passionate about improving developer workflows and tooling. Interested in build systems, IDE extensions, and automation tools that make developers more productive.",
+      "metadata": {
+        "tags": [
+          "dx",
+          "tools",
+          "productivity"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "interests_004",
+      "category": "interests",
+      "content": "AI and LLMs: Fascinated by the capabilities of large language models and their applications in software development. Experimenting with prompt engineering, RAG systems, and building AI-powered developer tools.",
+      "metadata": {
+        "tags": [
+          "ai",
+          "llm",
+          "innovation"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "interests_005",
+      "category": "interests",
+      "content": "Performance Optimization: Enjoys profiling and optimizing application performance. Interested in topics like lazy loading, code splitting, caching strategies, and database query optimization.",
+      "metadata": {
+        "tags": [
+          "performance",
+          "optimization"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "contact_001",
+      "category": "contact",
+      "content": "Saptarshi is open to interesting opportunities, collaborations, and technical discussions. Feel free to reach out through the contact information available in the terminal filesystem.",
+      "metadata": {
+        "tags": [
+          "contact",
+          "networking"
+        ],
+        "priority": 1,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "philosophy_001",
+      "category": "philosophy",
+      "content": "Saptarshi believes in writing clean, maintainable code that prioritizes readability and simplicity. He advocates for test-driven development, continuous learning, and sharing knowledge with the community.",
+      "metadata": {
+        "tags": [
+          "philosophy",
+          "values",
+          "principles"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    },
+    {
+      "id": "philosophy_002",
+      "category": "philosophy",
+      "content": "Strong believer in the Unix philosophy: do one thing well, compose tools together, and prefer text-based interfaces. Advocates for keyboard-driven workflows and terminal-first development environments.",
+      "metadata": {
+        "tags": [
+          "philosophy",
+          "unix",
+          "terminal"
+        ],
+        "priority": 2,
+        "lastUpdated": "2025-11-08"
+      }
+    }
+  ]
+}

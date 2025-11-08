@@ -225,7 +225,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🔗 Links
 
 - **Portfolio**: [Live Demo](https://your-portfolio-url.com)
-- **Email**: sb@sbk2k1.in
+- **Email**: mail@sbk2k1.in
 - **GitHub**: [github.com/sbk2k1](https://github.com/sbk2k1)
 
 ---

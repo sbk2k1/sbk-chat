@@ -1,0 +1,603 @@
+# YAML Filesystem Configuration
+# Defines the complete virtual filesystem structure for the terminal portfolio
+
+/:
+  type: directory
+  children:
+    home:
+      type: directory
+      children:
+        saptarshi:
+          type: directory
+          children:
+            # About directory - Personal information
+            about:
+              type: directory
+              permissions: "drwxr-xr-x"
+              metadata:
+                owner: "saptarshi"
+                modified: "2025-11-08"
+              children:
+                bio.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    Born to build. Currently breaking and making things in tech.
+                    
+                    Software engineer passionate about creating innovative solutions
+                    at the intersection of AI, web technologies, and developer tools.
+                    
+                    I believe in writing clean, maintainable code and building products
+                    that solve real problems. When I'm not coding, you'll find me
+                    exploring new technologies, contributing to open source, or
+                    tinkering with side projects.
+                    
+                    Always learning, always building.
+                
+                contact.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 256
+                    modified: "2025-11-08"
+                  content: |
+                    Email: saptarshi@example.com
+                    GitHub: github.com/saptarshi
+                    LinkedIn: linkedin.com/in/saptarshi
+                    Twitter: @saptarshi
+                    
+                    Feel free to reach out for collaborations, opportunities,
+                    or just to chat about tech!
+                
+                resume.sh:
+                  type: script
+                  permissions: "-rwxr-xr-x"
+                  metadata:
+                    size: 128
+                    modified: "2025-11-08"
+                  action:
+                    type: open_link
+                    target: "https://sbk2k1.in/resume.pdf"
+                  content: |
+                    #!/bin/bash
+                    # Opens resume in new tab
+                    echo "Opening resume..."
+                
+                website.sh:
+                  type: script
+                  permissions: "-rwxr-xr-x"
+                  metadata:
+                    size: 128
+                    modified: "2025-11-08"
+                  action:
+                    type: open_link
+                    target: "https://sbk2k1.in"
+                  content: |
+                    #!/bin/bash
+                    # Opens personal website
+                    echo "Opening website..."
+            
+            # Projects directory - Portfolio projects
+            projects:
+              type: directory
+              permissions: "drwxr-xr-x"
+              metadata:
+                owner: "saptarshi"
+                modified: "2025-11-08"
+              children:
+                README.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 256
+                    modified: "2025-11-08"
+                  content: |
+                    PROJECTS
+                    ========
+                    
+                    A collection of projects I've built and contributed to.
+                    Each directory contains details about the project,
+                    technologies used, and links to live demos or repositories.
+                    
+                    Use 'ls' to see all projects, 'cd' to navigate into each one.
+                
+                terminal-portfolio:
+                  type: directory
+                  permissions: "drwxr-xr-x"
+                  children:
+                    info.txt:
+                      type: file
+                      permissions: "-rw-r--r--"
+                      metadata:
+                        size: 512
+                        modified: "2025-11-08"
+                      content: |
+                        Terminal Portfolio
+                        ==================
+                        
+                        An interactive RHEL-style terminal portfolio with AI chat capabilities.
+                        
+                        Tech Stack:
+                        - React + TypeScript
+                        - Vite
+                        - Google Gemini API
+                        - Ollama/vLLM for local LLM
+                        - YAML-based filesystem
+                        
+                        Features:
+                        - Authentic terminal experience
+                        - Dual AI chat modes (cloud & local)
+                        - Knowledge-based responses
+                        - Easter eggs and personality
+                        
+                        Status: Active Development
+                    
+                    demo.sh:
+                      type: script
+                      permissions: "-rwxr-xr-x"
+                      action:
+                        type: open_link
+                        target: "https://chat.saptarshi.in"
+                      content: |
+                        #!/bin/bash
+                        echo "Opening live demo..."
+                    
+                    repo.sh:
+                      type: script
+                      permissions: "-rwxr-xr-x"
+                      action:
+                        type: open_link
+                        target: "https://github.com/sbk2k1/sbk-chat"
+                      content: |
+                        #!/bin/bash
+                        echo "Opening GitHub repository..."
+                
+                ai-code-assistant:
+                  type: directory
+                  permissions: "drwxr-xr-x"
+                  children:
+                    info.txt:
+                      type: file
+                      permissions: "-rw-r--r--"
+                      metadata:
+                        size: 512
+                        modified: "2025-11-08"
+                      content: |
+                        AI Code Assistant
+                        =================
+                        
+                        An intelligent code completion and refactoring tool powered by LLMs.
+                        
+                        Tech Stack:
+                        - Python
+                        - FastAPI
+                        - OpenAI API / Local LLMs
+                        - VS Code Extension API
+                        
+                        Features:
+                        - Context-aware code suggestions
+                        - Automated refactoring
+                        - Documentation generation
+                        - Code review assistance
+                        
+                        Status: Production
+                    
+                    repo.sh:
+                      type: script
+                      permissions: "-rwxr-xr-x"
+                      action:
+                        type: open_link
+                        target: "https://github.com/saptarshi/ai-code-assistant"
+                      content: |
+                        #!/bin/bash
+                        echo "Opening GitHub repository..."
+                
+                distributed-task-queue:
+                  type: directory
+                  permissions: "drwxr-xr-x"
+                  children:
+                    info.txt:
+                      type: file
+                      permissions: "-rw-r--r--"
+                      metadata:
+                        size: 512
+                        modified: "2025-11-08"
+                      content: |
+                        Distributed Task Queue
+                        ======================
+                        
+                        A high-performance distributed task queue system with Redis backend.
+                        
+                        Tech Stack:
+                        - Go
+                        - Redis
+                        - Docker
+                        - Kubernetes
+                        
+                        Features:
+                        - Priority-based task scheduling
+                        - Retry mechanisms with exponential backoff
+                        - Real-time monitoring dashboard
+                        - Horizontal scalability
+                        
+                        Status: Production
+                    
+                    repo.sh:
+                      type: script
+                      permissions: "-rwxr-xr-x"
+                      action:
+                        type: open_link
+                        target: "https://github.com/saptarshi/distributed-task-queue"
+                      content: |
+                        #!/bin/bash
+                        echo "Opening GitHub repository..."
+            
+            # Experience directory - Work history
+            experience:
+              type: directory
+              permissions: "drwxr-xr-x"
+              metadata:
+                owner: "saptarshi"
+                modified: "2025-11-08"
+              children:
+                README.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 256
+                    modified: "2025-11-08"
+                  content: |
+                    WORK EXPERIENCE
+                    ===============
+                    
+                    Professional experience and roles throughout my career.
+                    Each file contains details about the position, responsibilities,
+                    and key achievements.
+                
+                current.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    Senior Software Engineer
+                    TechCorp Inc. | 2023 - Present
+                    
+                    Leading development of cloud-native applications and AI-powered tools.
+                    
+                    Responsibilities:
+                    - Architecting scalable microservices infrastructure
+                    - Mentoring junior developers and conducting code reviews
+                    - Implementing CI/CD pipelines and DevOps practices
+                    - Integrating LLMs into production applications
+                    
+                    Key Achievements:
+                    - Reduced deployment time by 60% through automation
+                    - Led migration to Kubernetes, improving system reliability
+                    - Built AI-powered code review tool used by 200+ developers
+                    - Established engineering best practices and documentation standards
+                    
+                    Tech Stack: TypeScript, Python, Go, React, Node.js, Kubernetes,
+                    AWS, PostgreSQL, Redis, Docker
+                
+                previous-roles.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 768
+                    modified: "2025-11-08"
+                  content: |
+                    SOFTWARE ENGINEER
+                    StartupXYZ | 2021 - 2023
+                    
+                    Full-stack development for a fast-growing SaaS platform.
+                    
+                    - Built RESTful APIs serving 100K+ daily active users
+                    - Implemented real-time features using WebSockets
+                    - Optimized database queries, reducing response time by 40%
+                    - Collaborated with product team on feature development
+                    
+                    Tech Stack: Node.js, React, MongoDB, Redis, AWS
+                    
+                    ---
+                    
+                    JUNIOR DEVELOPER
+                    WebDev Agency | 2019 - 2021
+                    
+                    Developed custom web applications for diverse clients.
+                    
+                    - Created responsive websites and web applications
+                    - Integrated third-party APIs and payment systems
+                    - Maintained and updated existing client projects
+                    - Participated in agile development processes
+                    
+                    Tech Stack: JavaScript, React, PHP, MySQL, WordPress
+            
+            # Skills directory - Technical skills
+            skills:
+              type: directory
+              permissions: "drwxr-xr-x"
+              metadata:
+                owner: "saptarshi"
+                modified: "2025-11-08"
+              children:
+                README.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 256
+                    modified: "2025-11-08"
+                  content: |
+                    TECHNICAL SKILLS
+                    ================
+                    
+                    A comprehensive overview of my technical skills and expertise.
+                    Organized by category for easy navigation.
+                
+                languages.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    PROGRAMMING LANGUAGES
+                    =====================
+                    
+                    Expert:
+                    - TypeScript/JavaScript (ES6+)
+                    - Python
+                    - Go
+                    
+                    Proficient:
+                    - Rust
+                    - Java
+                    - SQL
+                    - Bash/Shell scripting
+                    
+                    Familiar:
+                    - C/C++
+                    - Ruby
+                    - PHP
+                    
+                    Always learning new languages and paradigms to expand my toolkit.
+                
+                frontend.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    FRONTEND TECHNOLOGIES
+                    =====================
+                    
+                    Frameworks & Libraries:
+                    - React (Hooks, Context, Redux)
+                    - Next.js
+                    - Vue.js
+                    - Svelte
+                    - TypeScript
+                    
+                    Styling:
+                    - Tailwind CSS
+                    - CSS-in-JS (styled-components, emotion)
+                    - SASS/SCSS
+                    - CSS Modules
+                    
+                    Build Tools:
+                    - Vite
+                    - Webpack
+                    - esbuild
+                    - Rollup
+                    
+                    Testing:
+                    - Jest
+                    - React Testing Library
+                    - Playwright
+                    - Cypress
+                
+                backend.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    BACKEND TECHNOLOGIES
+                    ====================
+                    
+                    Frameworks:
+                    - Node.js (Express, Fastify, NestJS)
+                    - Python (FastAPI, Django, Flask)
+                    - Go (Gin, Echo)
+                    
+                    Databases:
+                    - PostgreSQL
+                    - MongoDB
+                    - Redis
+                    - MySQL
+                    - SQLite
+                    
+                    APIs:
+                    - RESTful API design
+                    - GraphQL
+                    - gRPC
+                    - WebSockets
+                    
+                    Message Queues:
+                    - RabbitMQ
+                    - Apache Kafka
+                    - Redis Pub/Sub
+                
+                devops.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    DEVOPS & INFRASTRUCTURE
+                    =======================
+                    
+                    Cloud Platforms:
+                    - AWS (EC2, S3, Lambda, RDS, ECS)
+                    - Google Cloud Platform
+                    - DigitalOcean
+                    
+                    Containerization & Orchestration:
+                    - Docker
+                    - Kubernetes
+                    - Docker Compose
+                    
+                    CI/CD:
+                    - GitHub Actions
+                    - GitLab CI
+                    - Jenkins
+                    - CircleCI
+                    
+                    Infrastructure as Code:
+                    - Terraform
+                    - Ansible
+                    
+                    Monitoring:
+                    - Prometheus
+                    - Grafana
+                    - ELK Stack
+                
+                ai-ml.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    AI & MACHINE LEARNING
+                    =====================
+                    
+                    LLM Integration:
+                    - OpenAI API (GPT-4, GPT-3.5)
+                    - Google Gemini
+                    - Anthropic Claude
+                    - Ollama (local LLMs)
+                    - LangChain
+                    
+                    ML Frameworks:
+                    - TensorFlow
+                    - PyTorch
+                    - scikit-learn
+                    
+                    Vector Databases:
+                    - Pinecone
+                    - Weaviate
+                    - ChromaDB
+                    
+                    Concepts:
+                    - Prompt engineering
+                    - RAG (Retrieval Augmented Generation)
+                    - Fine-tuning
+                    - Embeddings
+            
+            # Interests directory - Personal interests
+            interests:
+              type: directory
+              permissions: "drwxr-xr-x"
+              metadata:
+                owner: "saptarshi"
+                modified: "2025-11-08"
+              children:
+                README.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 256
+                    modified: "2025-11-08"
+                  content: |
+                    INTERESTS & HOBBIES
+                    ===================
+                    
+                    Beyond coding, here are some things I'm passionate about.
+                
+                tech.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    TECHNOLOGY INTERESTS
+                    ====================
+                    
+                    - AI and Machine Learning: Fascinated by the potential of LLMs
+                      and their applications in developer tools
+                    
+                    - Developer Experience: Building tools that make developers
+                      more productive and happy
+                    
+                    - Open Source: Contributing to projects I use and believe in
+                    
+                    - Web Performance: Optimizing applications for speed and efficiency
+                    
+                    - Terminal Tools: Creating powerful CLI applications and
+                      terminal-based interfaces
+                    
+                    - System Design: Architecting scalable, maintainable systems
+                    
+                    - Programming Languages: Exploring new languages and paradigms
+                
+                hobbies.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    HOBBIES & ACTIVITIES
+                    ====================
+                    
+                    - Reading: Sci-fi novels, technical books, and tech blogs
+                    
+                    - Writing: Technical blog posts and documentation
+                    
+                    - Gaming: Strategy games and indie titles
+                    
+                    - Music: Playing guitar and discovering new artists
+                    
+                    - Photography: Capturing moments and experimenting with composition
+                    
+                    - Hiking: Exploring nature trails and disconnecting from screens
+                    
+                    - Coffee: Brewing the perfect cup and trying new roasts
+                    
+                    - Side Projects: Always tinkering with new ideas and technologies
+                
+                learning.txt:
+                  type: file
+                  permissions: "-rw-r--r--"
+                  metadata:
+                    size: 512
+                    modified: "2025-11-08"
+                  content: |
+                    CURRENTLY LEARNING
+                    ==================
+                    
+                    - Rust: Diving deep into systems programming and memory safety
+                    
+                    - WebAssembly: Exploring high-performance web applications
+                    
+                    - Distributed Systems: Understanding consensus algorithms
+                      and fault tolerance
+                    
+                    - LLM Fine-tuning: Training custom models for specific tasks
+                    
+                    - Kubernetes Advanced Patterns: Service mesh, operators, and
+                      custom controllers
+                    
+                    - Functional Programming: Exploring Haskell and category theory
+                    
+                    Always curious, always learning. The tech landscape never stops
+                    evolving, and neither do I.

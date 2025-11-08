@@ -1,24 +1,28 @@
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useTerminal } from '../hooks/useTerminal';
+import { useDebounce } from '../hooks/useDebounce';
 
 const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
-  const [autocompleteIndex, setAutocompleteIndex] = useState(-1);
-  const [showingAutocomplete, setShowingAutocomplete] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const historyEndRef = useRef<HTMLDivElement>(null);
   
   const { 
     history, 
     isBooting, 
-    isChatMode, 
-    executeCommand, 
+    chatMode, 
+    executeCommand,
+    cancelCommand,
     getCurrentPrompt, 
     navigateHistory,
     getAutocompleteOptions,
     config 
   } = useTerminal();
+
+  // Debounce input for autocomplete to reduce computation
+  const debouncedInput = useDebounce(input, 150);
 
   useEffect(() => {
     if (inputRef.current && !isBooting) {
@@ -26,18 +30,20 @@ const Terminal: React.FC = () => {
     }
   }, [isBooting]);
 
+  // Auto-scroll to bottom when history changes
   useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
+    historyEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
 
+  // Memoize autocomplete options to avoid recalculation
+  const autocompleteOptions = useMemo(() => {
+    return getAutocompleteOptions(debouncedInput);
+  }, [debouncedInput, getAutocompleteOptions]);
+
   const handleAutocomplete = useCallback(() => {
-    const options = getAutocompleteOptions(input);
-    if (options.length > 0) {
+    if (autocompleteOptions.length > 0) {
       const [command, ...args] = input.split(' ');
-      const currentArg = args[args.length - 1] || '';
-      const selectedOption = options[0];
+      const selectedOption = autocompleteOptions[0];
       
       if (args.length === 0) {
         setInput(selectedOption + ' ');
@@ -46,27 +52,29 @@ const Terminal: React.FC = () => {
         setInput(command + ' ' + newArgs.join(' ') + ' ');
       }
     }
-  }, [input, getAutocompleteOptions]);
+  }, [input, autocompleteOptions]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
       executeCommand(input);
       setInput('');
-      setAutocompleteIndex(-1);
-      setShowingAutocomplete(false);
     }
-  };
+  }, [input, executeCommand]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.ctrlKey && e.key === 'c') {
+  // Memoize keyboard handler to prevent recreation
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    // Check for Ctrl+C (also handle lowercase 'c')
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
       e.preventDefault();
-      if (isChatMode) {
+      e.stopPropagation();
+      
+      if (chatMode) {
         executeCommand('exit');
       } else {
+        // Show the cancelled command with ^C and create a new prompt line
+        cancelCommand(input);
         setInput('');
-        setAutocompleteIndex(-1);
-        setShowingAutocomplete(false);
       }
       return;
     }
@@ -90,10 +98,45 @@ const Terminal: React.FC = () => {
       setInput(nextCommand);
       return;
     }
+  }, [chatMode, executeCommand, cancelCommand, input, handleAutocomplete, navigateHistory]);
 
-    setAutocompleteIndex(-1);
-    setShowingAutocomplete(false);
-  };
+  // Memoize history rendering to avoid unnecessary re-renders
+  const renderedHistory = useMemo(() => {
+    return history.map((entry, index) => (
+      <div key={`${entry.timestamp}-${index}`} className="mb-1">
+        {entry.command && (
+          <div className="flex">
+            <span 
+              className="mr-2"
+              dangerouslySetInnerHTML={{ 
+                __html: entry.command.startsWith('>>>') ? '' : (entry.prompt || getCurrentPrompt())
+              }}
+            />
+            <span>{entry.command}</span>
+          </div>
+        )}
+        {entry.output.map((line, lineIndex) => (
+          <div 
+            key={lineIndex} 
+            className="whitespace-pre-wrap"
+            dangerouslySetInnerHTML={{ __html: line }}
+          />
+        ))}
+      </div>
+    ));
+  }, [history, getCurrentPrompt]);
+
+  // Memoize terminal styles
+  const terminalStyle = useMemo(() => ({
+    backgroundColor: config.visuals.colors.background,
+    color: config.visuals.colors.foreground,
+    fontFamily: config.visuals.font
+  }), [config]);
+
+  const inputStyle = useMemo(() => ({
+    color: config.visuals.colors.foreground,
+    caretColor: 'transparent'
+  }), [config]);
 
   if (isBooting) {
     return (
@@ -125,71 +168,42 @@ const Terminal: React.FC = () => {
 
   return (
     <div 
-      className="min-h-screen p-4 font-mono text-sm"
-      style={{ 
-        backgroundColor: config.visuals.colors.background,
-        color: config.visuals.colors.foreground,
-        fontFamily: config.visuals.font
-      }}
+      ref={terminalRef}
+      className="min-h-screen p-4 font-mono text-sm overflow-auto terminal-scroll"
+      style={terminalStyle}
       onClick={() => inputRef.current?.focus()}
     >
-      <div 
-        ref={terminalRef}
-        className="max-w-full overflow-auto terminal-scroll"
-        style={{ maxHeight: 'calc(100vh - 100px)' }}
-      >
-        {history.map((entry, index) => (
-          <div key={index} className="mb-1">
-            {entry.command && (
-              <div className="flex">
-                <span 
-                  className="mr-2"
-                  style={{ color: config.visuals.colors.cursor }}
-                >
-                  {entry.command.startsWith('>>>') ? '' : getCurrentPrompt()}
-                </span>
-                <span>{entry.command}</span>
-              </div>
-            )}
-            {entry.output.map((line, lineIndex) => (
-              <div 
-                key={lineIndex} 
-                className="whitespace-pre-wrap"
-                dangerouslySetInnerHTML={{ __html: line }}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      {renderedHistory}
+      <div ref={historyEndRef} />
 
       <form onSubmit={handleSubmit}>
         <div className="flex items-center">
           <span 
             className="mr-2"
-            style={{ color: config.visuals.colors.cursor }}
-          >
-            {getCurrentPrompt()}
-          </span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none border-none"
-            style={{ 
-              color: config.visuals.colors.foreground,
-              caretColor: config.visuals.colors.cursor
-            }}
-            autoComplete="off"
-            spellCheck={false}
+            dangerouslySetInnerHTML={{ __html: getCurrentPrompt() }}
           />
-          <span 
-            className={config.visuals.cursor.blinking ? 'animate-pulse' : ''}
-            style={{ color: config.visuals.colors.cursor }}
-          >
-            █
-          </span>
+          <div className="relative flex-1">
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-full bg-transparent outline-none border-none"
+              style={inputStyle}
+              autoComplete="off"
+              spellCheck={false}
+            />
+            <span 
+              className="terminal-cursor-block cursor-blink absolute top-0"
+              style={{ 
+                left: `${input.length * 0.6}em`,
+                visibility: 'visible'
+              }}
+            >
+              █
+            </span>
+          </div>
         </div>
       </form>
     </div>
